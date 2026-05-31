@@ -1,0 +1,9 @@
+streamlit>=1.32.0
+plotly>=5.20.0
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.13.0
+scikit-learn>=1.4.0
+hmmlearn>=0.3.0
+yfinance>=0.2.40
+ccxt>=4.4.0
