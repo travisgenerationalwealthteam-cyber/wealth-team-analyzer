@@ -284,12 +284,17 @@ with st.sidebar:
         min_value=180, max_value=1095, value=730, step=30,
         help="More history = more stable HMM training. 2 years is the default.",
     )
-    regime_min, regime_max = st.select_slider(
+    regime_range_choice = st.selectbox(
         "Regime count search range",
-        options=[(3, 4), (3, 5), (4, 5)],
-        value=(3, 5),
-        format_func=lambda x: f"{x[0]}-{x[1]}",
+        options=["3 to 4 regimes", "3 to 5 regimes", "4 to 5 regimes"],
+        index=1,
+        help="HMM tries each N in this range and picks the one with lowest BIC.",
     )
+    regime_min, regime_max = {
+        "3 to 4 regimes": (3, 4),
+        "3 to 5 regimes": (3, 5),
+        "4 to 5 regimes": (4, 5),
+    }[regime_range_choice]
     analyze = st.button("🔍 Analyze", type="primary", use_container_width=True)
 
     st.divider()
